@@ -17,7 +17,7 @@ export type gitHubUser = {
   bio: string | null;
 }
 function App() {
-   const [user, setUser] = useState<gitHubUser | null>(null)
+   const [user, setUser] = useState<gitHubUser | any>(null)
 
    const [userInput, setUserInput] = useState<string>('')
 
@@ -38,8 +38,12 @@ useEffect(() => {
     .then(response => response.json())
     .then(data => {
       setUser(data); 
+      if (data.message === "Not Found"){
+       setUser(false)
+    }
     })
     .catch(error => console.log(error));
+    
 
 }, [submit]);
 
@@ -47,7 +51,9 @@ useEffect(() => {
     <div className={theme ? 'bg-[#141D2F] w-full h-full flex flex-col items-center justify-center' : 'bg-[#F6F8FF] w-full h-full flex flex-col items-center justify-center'}>
    <Search setUserInput={setUserInput} 
    setSubmit={setSubmit} submit={submit} 
-   setTheme={setTheme} theme={theme}/>
+   setTheme={setTheme} theme={theme} 
+   user={user}
+   />
     
     <Interface user={user} theme={theme} />
     </div>

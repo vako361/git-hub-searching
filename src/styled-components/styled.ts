@@ -1,9 +1,12 @@
 import styled from "styled-components";
-export const StyledSearch = styled.input`
+interface StyledSearchProps {
+  isDark: boolean;
+}
+ export const StyledSearch = styled.input<StyledSearchProps>`
  width: 100%;
  height: 69px;
  border-radius: 15px;
- background: #FEFEFE;
+ background-color:${(props) => (props.isDark ? '#1E2A47' : '#FEFEFE')} ;
  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.20);
   &:focus {
     outline: none; /* optional: removes default outline */
@@ -17,6 +20,8 @@ export const StyledSearch = styled.input`
  font-weight: 400;
  line-height: 25px;
  padding-left: 80px;
- margin-top: 35px;
- margin-bottom: 24px;
+ background-image: url('/assets/icon-search.svg');
+ background-repeat: no-repeat;
+ background-position-x: 32px;
+ background-position-y:center ;
 `
