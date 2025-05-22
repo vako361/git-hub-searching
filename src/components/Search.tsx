@@ -28,7 +28,7 @@ const Search: React.FC<Props> =  ({ setUserInput, setSubmit, submit, setTheme, t
 
         </div>
 
-        <div className="w-[730px] relative  mb-[35px] mt-[24px]"> 
+        <div className=" w-[350px] sm:w-[730px] relative  mb-[35px] mt-[24px]"> 
       <StyledSearch onChange={(e) =>  setUserInput(e.target.value)} isDark={theme}>
       </StyledSearch>
       {user ? null : <span className="text-[#F74646] absolute right-[140px] top-[35%]">No results</span>}
